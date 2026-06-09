@@ -21,9 +21,11 @@ A minimal Remix application starter with a home page.
 
 ## Commands
 
+Make sure pnpm and node are installed in the correct version, which is specified in `package.json`.
+
 ```sh
-npm i
-npm run start
-npm test
-npm run typecheck
+pnpm i
+pnpm run start
+pnpm test
+pnpm run typecheck
 ```
