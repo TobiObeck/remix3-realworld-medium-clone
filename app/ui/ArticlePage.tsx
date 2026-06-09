@@ -3,18 +3,35 @@ import type { RemixNode } from 'remix/ui/jsx-runtime'
 import { Layout } from './BaseLayout.tsx'
 
 export interface ArticlePageProps {
-  slug?: string
+  article: {
+    slug: string
+    title: string
+    description: string
+    body: string
+    tagList: string[]
+    createdAt: string // TODO try out branded types to enforce iso date formatting?! '2026-06-09T20:33:27.329Z',
+    updatedAt: string // TODO try out branded types to enforce iso date formatting?! '2026-06-09T20:33:27.329Z',
+    favorited: false
+    favoritesCount: number
+    author: {
+      username: string
+      bio: string
+      image: string
+      following: boolean
+    }
+  }
 }
 
 export function ArticlePage(handle: Handle<ArticlePageProps>) {
-  let { slug } = handle.props
+  let { article } = handle.props
+  let { title, body } = article
 
   return () => (
     <Layout>
       <div class="article-page">
         <div class="banner">
           <div class="container">
-            <h1>{slug}</h1>
+            <h1>{title}</h1>
 
             <div class="article-meta">
               <a href="/profile/eric-simons">
@@ -48,7 +65,9 @@ export function ArticlePage(handle: Handle<ArticlePageProps>) {
         <div class="container page">
           <div class="row article-content">
             <div class="col-md-12">
-              <p>
+              {/* TODO proper markdown formatting. Maybe possible as a server rendered frame? */}
+              {body}
+              {/* <p>
                 Web development technologies have evolved at an incredible clip over the past few
                 years.
               </p>
@@ -57,7 +76,7 @@ export function ArticlePage(handle: Handle<ArticlePageProps>) {
               <ul class="tag-list">
                 <li class="tag-default tag-pill tag-outline">realworld</li>
                 <li class="tag-default tag-pill tag-outline">implementations</li>
-              </ul>
+              </ul> */}
             </div>
           </div>
 
@@ -111,7 +130,7 @@ export function ArticlePage(handle: Handle<ArticlePageProps>) {
               <div class="card">
                 <div class="card-block">
                   <p class="card-text">
-                    With supporting text below as a natural lead-in to additional content.
+                    Don't forget to check out my sound cloud as well! I make sick beats
                   </p>
                 </div>
                 <div class="card-footer">
@@ -128,9 +147,7 @@ export function ArticlePage(handle: Handle<ArticlePageProps>) {
 
               <div class="card">
                 <div class="card-block">
-                  <p class="card-text">
-                    With supporting text below as a natural lead-in to additional content.
-                  </p>
+                  <p class="card-text">Just writing another comment lol</p>
                 </div>
                 <div class="card-footer">
                   <a href="/profile/author" class="comment-author">

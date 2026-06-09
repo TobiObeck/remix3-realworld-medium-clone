@@ -9,6 +9,8 @@ import { RegisterPage } from '../ui/RegisterPage.tsx'
 import { SettingsPage } from '../ui/SettingsPage.tsx'
 import { ArticlePage } from '../ui/ArticlePage.tsx'
 
+const BASE_API_URL = 'https://api.realworld.show/api'
+
 export default createController(routes, {
   actions: {
     async assets(context) {
@@ -25,9 +27,15 @@ export default createController(routes, {
     register(context) {
       return context.render(<RegisterPage />)
     },
-    article(context) {
+    async article(context) {
       console.log('context.params', context.params)
-      return context.render(<ArticlePage slug={context.params.slug} />)
+
+      const response = await fetch(BASE_API_URL + '/articles/' + context.params.slug)
+      console.log(response)
+      const result = await response.json()
+      console.log(result)
+
+      return context.render(<ArticlePage article={result.article} />)
     },
     settings(context) {
       return context.render(<SettingsPage />)
