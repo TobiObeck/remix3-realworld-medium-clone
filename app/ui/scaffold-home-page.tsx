@@ -3,9 +3,9 @@ import type { Handle, RemixNode } from 'remix/ui'
 import { css } from 'remix/ui'
 
 import { PromptButton } from '../assets/prompt-button.tsx'
-import { Document } from './document.tsx'
+import { Document } from './scaffold-document.tsx'
 
-const FONT_STACK =
+export const FONT_STACK =
   "'JetBrains Mono', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace"
 
 export function HomePage() {
@@ -54,6 +54,7 @@ export function HomePage() {
             gap: '72px',
           })}
         >
+          <a href="/login">LOGIN</a>
           <Masthead />
           <Columns />
           <Footer />
@@ -63,7 +64,7 @@ export function HomePage() {
   )
 }
 
-function HomeHead() {
+export function HomeHead() {
   return () => (
     <>
       <meta name="color-scheme" content="light dark" />
@@ -77,7 +78,7 @@ function HomeHead() {
   )
 }
 
-function Masthead() {
+export function Masthead() {
   return () => (
     <section
       aria-label="Welcome"
@@ -109,7 +110,7 @@ function Masthead() {
   )
 }
 
-function Columns() {
+export function Columns() {
   return () => (
     <section
       aria-label="Getting started"
@@ -262,7 +263,7 @@ function IconSlot(handle: Handle<{ children: RemixNode; rotated?: boolean }>) {
   }
 }
 
-function Footer() {
+export function Footer() {
   return () => (
     <footer
       mix={css({
