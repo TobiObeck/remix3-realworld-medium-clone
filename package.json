@@ -19,7 +19,7 @@
     "typescript": "latest"
   },
   "license": "AGPL-3.0",
-  "packageManager": "pnpm@10.26.0",
+  "packageManager": "pnpm@11.10.0",
   "volta": {
     "// volta has experimental pnpm support. You need to set env var VOLTA_FEATURE_PNPM to 1": "https://docs.volta.sh/advanced/pnpm",
     "node": "24.3.0",
